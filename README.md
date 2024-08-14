@@ -1,5 +1,5 @@
 # TimingExerciseTriggerHATS2024
-Short timing exercise for Trigger HATS@LPC 2023
+Short timing exercise for Trigger HATS@LPC 2024
 
 ## Prerequisites
 
@@ -16,11 +16,20 @@ git clone https://gitlab.cern.ch/cms-tsg/steam/timing.git
 cd timing
 ```
 
-2. Submit a timing job to the timing machine using CMSSW_13_2_0, the GRun menu V152 and the default dataset on the timing machine. Additionally, tell the program to merge in pull request [#42534](https://github.com/cms-sw/cmssw/pull/42534) Also use a user-specified tag to better identify your job later in the queue.
+2. Submit a timing job to the timing machine using CMSSW_13_2_0, the GRun menu V152 and the default dataset on the timing machine.
 
 
 ```bash
-python3 submit.py /dev/CMSSW_13_0_0/GRun/V152 --cmssw CMSSW_13_2_0 --pull-requests 42534 --tag YOUR_TAG_HERE
+python3 submit.py /dev/CMSSW_14_0_0/GRun/V173 --cmssw CMSSW_14_0_11 --tag YOUR_TAG_HERE
+```
+
+There is a possibility to require ```pip3 install tsgauth==0.10.2```
+To fix that, use
+```
+python3 -m venv venv
+source venv/bin/activate
+pip3 install --upgrade pip
+pip3 install tsgauth==0.10.2
 ```
 
 3. Check the status of your job using the `job_manager.py` script.
