@@ -31,6 +31,7 @@ source venv/bin/activate
 pip3 install --upgrade pip
 pip3 install tsgauth==0.10.2
 ```
+
 If you have 2FA, the code will give you a link (like ```https://auth.cern.ch/auth/realms/cern/...```) which should be copy and pasted in the browser to grant access.
 
 3. Check the status of your job using the `job_manager.py` script.
