@@ -31,6 +31,7 @@ source venv/bin/activate
 pip3 install --upgrade pip
 pip3 install tsgauth==0.10.2
 ```
+If you have 2FA, the code will give you a link (like ```https://auth.cern.ch/auth/realms/cern/...```) which should be copy and pasted in the browser to grant access.
 
 3. Check the status of your job using the `job_manager.py` script.
 
@@ -55,7 +56,7 @@ NOTE: It is currently not possible to cancel an already running job. Only queued
 6. Submit another job with the same settings as before, but now only using the CPUs by adding the `--cpu-only` option. This will run the same job, but only on the CPUs of the timing machine. This is useful to compare the performance of the CPUs and GPUs.
 
 ```bash
-python3 submit.py /dev/CMSSW_13_0_0/GRun/V152 --cmssw CMSSW_13_2_0 --cpu-only --pull-requests 42534 --tag YOUR_CPU_JOB_TAG_HERE
+python3 submit.py /dev/CMSSW_14_0_0/GRun/V173 --cmssw CMSSW_14_0_11 --cpu-only --tag YOUR_CPU_JOB_TAG_HERE
 ```
 
 7. Once your jobs have finished, get the reports for one of the jobs using the `job_manager.py` script and the `--report` option. This will download a `tar.gz` file containing output and error files for :
@@ -88,18 +89,17 @@ It is also possible to submit a timing job with a previously created CMSSW area.
 1. Create a CMSSW area on lxplus and build it using the GRun menu V152 and the default dataset on the timing machine. Additionally, tell the program to merge in pull request [#42534](https://github.com/cms-sw/cmssw/pull/42534)
 
 ```bash
-cmsrel CMSSW_13_2_0
-cd CMSSW_13_2_0/src
+cmsrel CMSSW_14_0_11
+cd CMSSW_14_0_11/src
 cmsenv
 git cms-init
-git cms-merge-topic 42534
 scram build -j 4
 ```
 
 2. Download the same GRun menu as in Exercise 1 using the `hltGetConfiguration` command. When you do this outside this exercise, make sure you choose the correct globaltag and l1 menu for your use case. For this exercise you can copy/paste the command below.
 
 ```bash
-hltGetConfiguration /dev/CMSSW_13_0_0/GRun/V152 --globaltag 132X_dataRun3_HLT_v2 --data --process TIMING --full --offline --output minimal --type GRun --max-events 20000 --era Run3 --timing --l1 L1Menu_Collisions2023_v1_2_0-d1_xml > hlt.py
+hltGetConfiguration /dev/CMSSW_14_0_0/GRun/V173 --globaltag 140X_dataRun3_HLT_v3 --data --process TIMING --full --offline --output minimal --type GRun --max-events 20000 --era Run3 --timing --l1 L1Menu_Collisions2024_v1_3_0-d1_xml > hlt.py
 ```
 3. Clone the timing repository.
 
