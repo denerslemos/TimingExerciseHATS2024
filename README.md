@@ -87,7 +87,7 @@ Finally, let's find the path with the largest timing *difference* between CPU an
 
 It is also possible to submit a timing job with a previously created CMSSW area. When you do this, your area will get "cloned" to the timing machine and it will run a measurement using the cloned area. Since the arealess submission already allows for a lot of flexibility, this is not really necessary and **the arealess submission is the recommended way to submit jobs**. However, if you run some very specialized expert workflows that for some reason require additional tinkering with the CMSSW area that is not covered by the timing code, it can sometimes still be useful.
 
-1. Create a CMSSW area on lxplus and build it using the GRun menu V152 and the default dataset on the timing machine. Additionally, tell the program to merge in pull request [#42534](https://github.com/cms-sw/cmssw/pull/42534)
+1. Create a CMSSW area on lxplus and build it using the GRun menu V173 and the default dataset on the timing machine. 
 
 ```bash
 cmsrel CMSSW_14_0_11
